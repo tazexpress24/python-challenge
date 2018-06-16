@@ -30,7 +30,8 @@ import csv
 csvpath = os.path.join('budget_data.csv')
 
 total_months = 0
-total = 0
+totalNetAmount = 0
+amountlist = 0
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -47,14 +48,15 @@ with open(csvpath, newline='') as csvfile:
         #print(row)
     #The total number of months included in the dataset    
         total_months = total_months + 1
-
     #The total net amount of "Profit/Losses" over the entire period
-    Total = f['Total'].sum()
+        totalNetAmount = totalNetAmount + int(row[1])
+        #amountlist.append(int(eachRow[1]))
+    
     
     print("Finanacial Analysis")
     print("----------------------------")
     print(f"Total Months:{total_months}" )
-    print(f"Total:{total}")
+    print(f"Total:{totalNetAmount}")
 
     #print(f"Total:{revenue}")
 #The total number of months included in the dataset
