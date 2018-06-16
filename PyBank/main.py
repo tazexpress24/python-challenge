@@ -1,5 +1,7 @@
 #Your task is to create a Python script that analyzes the records 
 #to calculate each of the following:
+#The total number of months included in the dataset
+#The total net amount of "Profit/Losses" over the entire period
 #The average change in "Profit/Losses" between months over the entire period
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in losses (date and amount) over the entire period
@@ -28,6 +30,7 @@ import csv
 csvpath = os.path.join('budget_data.csv')
 
 total_months = 0
+total = 0
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -46,12 +49,13 @@ with open(csvpath, newline='') as csvfile:
         total_months = total_months + 1
 
     #The total net amount of "Profit/Losses" over the entire period
-    #for x in range(42)
-        #print(x)
+    Total = f['Total'].sum()
     
     print("Finanacial Analysis")
     print("----------------------------")
     print(f"Total Months:{total_months}" )
+    print(f"Total:{total}")
+
     #print(f"Total:{revenue}")
 #The total number of months included in the dataset
 #Financial Analysis
