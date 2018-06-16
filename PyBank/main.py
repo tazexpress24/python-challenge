@@ -1,8 +1,5 @@
 #Your task is to create a Python script that analyzes the records 
 #to calculate each of the following:
-#The total number of months included in the dataset
-#The total net amount of "Profit/Losses" over the entire period
-#The average change in "Profit/Losses" between months over the entire period
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in losses (date and amount) over the entire period
 #In addition, your final script should both print the analysis to the terminal 
@@ -50,16 +47,17 @@ with open(csvpath, newline='') as csvfile:
         total_months = total_months + 1
     #The total net amount of "Profit/Losses" over the entire period
         totalNetAmount = totalNetAmount + int(row[1])
-        #amountlist.append(int(eachRow[1]))
-    
+    #The average change in "Profit/Losses" between months over the entire period
+    #Average change in Profit/Loss = [Amount of last row - Amount of first row] / (Total length - 1)
     
     print("Finanacial Analysis")
     print("----------------------------")
     print(f"Total Months:{total_months}" )
     print(f"Total:{totalNetAmount}")
+    #print(f"Average Change:{}")
+    #print(f"Greatest Increase in Profits:{}")
+    #print(f"Greatest Decrease in Profits:{}")
 
-    #print(f"Total:{revenue}")
-#The total number of months included in the dataset
 #Financial Analysis
  # ----------------------------
   #Total Months: 86
