@@ -46,13 +46,13 @@ with open(csvpath, newline='') as csvfile:
         total_months = total_months + 1
 
     #The total net amount of "Profit/Losses" over the entire period
-    for x in range(42)
-        print(x)
+    #for x in range(42)
+        #print(x)
     
     print("Finanacial Analysis")
     print("----------------------------")
     print(f"Total Months:{total_months}" )
-    print(f"Total:{revenue}")
+    #print(f"Total:{revenue}")
 #The total number of months included in the dataset
 #Financial Analysis
  # ----------------------------
