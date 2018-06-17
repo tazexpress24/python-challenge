@@ -24,11 +24,14 @@ import os
 # Module for reading CSV's
 import csv
 
+
 csvpath = os.path.join('budget_data.csv')
 
 total_months = 0
 totalNetAmount = 0
-amountlist = 0
+profit_loss = 0
+increasepercent = 0
+decreasepercent = 0
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -48,15 +51,32 @@ with open(csvpath, newline='') as csvfile:
     #The total net amount of "Profit/Losses" over the entire period
         totalNetAmount = totalNetAmount + int(row[1])
     #The average change in "Profit/Losses" between months over the entire period
-    #Average change in Profit/Loss = [Amount of last row - Amount of first row] / (Total length - 1)
-    
+    #Average change in profit_loss = (Amount of last row - Amount of first row) / (Total length - 1)
+       # Average change in profit_loss = (Amount of last row - Amount of first row)
+    #The greatest increase in profits (date and amount) over the entire period.
+    #First work the diff(increase = New num - Orig Num) between the two number
+    #Then divide the increase by the orig num and multiply the answer by 100
+    # % increase = Increase / Orig Num x 100
+        def increasepercent(num1, num2):
+            num1 = float(num1)
+            num2 = float(num2)
+            percentage = '{0:.2f}'.format((num1 / num2 * 100))
+            return increasepercentage
+    #The greatest decrease in losses (date and amount) over the entire period    
+    #First work out the diff (decrease = Orig num - New num) between the two numbers comparing
+    #Then divide the decrease by the orig num and multiply the answer by 100
+    # % decrease = Decrease / Orig Num x 100
+   # Greatest Increase in Profits = 
+       # def decreasepercent(num1,num2)
+       #     return((float(num1) - num2) / abs(num2)) *100.00
+            
     print("Finanacial Analysis")
     print("----------------------------")
     print(f"Total Months:{total_months}" )
     print(f"Total:{totalNetAmount}")
     #print(f"Average Change:{}")
-    #print(f"Greatest Increase in Profits:{}")
-    #print(f"Greatest Decrease in Profits:{}")
+    print("Greatest Increase in Profits:{increasepercent}")
+   # print("Greatest Decrease in Profits:{decreasepercent}")
 
 #Financial Analysis
  # ----------------------------
