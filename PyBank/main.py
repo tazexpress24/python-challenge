@@ -9,6 +9,7 @@ import csv
 
 csvpath = os.path.join('budget_data.csv')
 
+#Define the variables used
 total_months = 0
 totalNetAmount = 0
 profit_loss = 0
@@ -31,27 +32,29 @@ with open(csvpath, newline='') as csvfile:
     for row in csvreader:
         value = int(row[1])
         values.append(value)
-
+       
     #The average change in "Profit/Losses" between months over the entire period
     #Average change in profit_loss = (Amount of last row - Amount of first row) / (Total length - 1)
+    profit_loss = (values[0] - values[len(values) - 1]) / len(values)
     
+    
+    #The total number of months included in the dataset
+    #The total months will be length of the dataset
+    total_months = len(values)
+
+    #The total net amount of "Profit/Losses" over the entire period
+    #Sum the value in the dataset
+    totalNetAmount = sum(values)
+
+
     #The greatest increase in profits (date and amount) over the entire period.
     #First work the diff(increase = New num - Orig Num) between the two number
     #Then divide the increase by the orig num and multiply the answer by 100
     # % increase = Increase / Orig Num x 100
-    #increasepercent = '{0:.2f}'.format((num1 / num2 * 100))
-
     #The greatest decrease in losses (date and amount) over the entire period    
     #First work out the diff (decrease = Orig num - New num) between the two numbers comparing
     #Then divide the decrease by the orig num and multiply the answer by 100
     # % decrease = Decrease / Orig Num x 100
-   # Greatest Increase in Profits = 
-        #def decreasepercent(num1,num2)
-         #  return((float(num1 - num2) / abs(num2)) *100.00
-
-    profit_loss = (values[0] - values[len(values) - 1]) / len(values)
-    total_months = len(values)
-    totalNetAmount = sum(values)
 
     for i in range(0, len(values) - 1):
         change = ((values[i] - values[i+1]) / values[i]) * 100
@@ -70,10 +73,3 @@ with open(csvpath, newline='') as csvfile:
     print(f"Greatest Increase in Profits:{greatestincreasepercent}")
     print(f"Greatest Decrease in Profits:{greatestdecreasepercent}")
 
-#Financial Analysis
- # ----------------------------
-  #Total Months: 86
-  #Total: $38382578
-  #Average  Change: $-2315.12
-  #Greatest Increase in Profits: Feb-2012 ($1926159)
-  #Greatest Decrease in Profits: Sep-2013 ($-2196167)

@@ -6,12 +6,8 @@ import csv
 
 csvpath = os.path.join('election_data.csv')
 
-#votecnt = 0
-#totalNetAmount = 0
-#profit_loss = 0
-#increasepercent = 0
-#decreasepercent = 0
-#  length = 0
+#Define the variables
+totalvotes = 0
 votes = []
 counties =  []
 candidates = []
@@ -25,33 +21,25 @@ with open(csvpath, newline='') as csvfile:
 
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
     #Read each row of data after the header
     for row in csvreader:
-        print(row)
+        vote = int(row[0])
+        votes.append(vote)
 
+    
     #The total number of votes cast
-    #Calculate the total number of votes   
-    #def NumCount(file)
-     #   votecnt=0    
-        #  for total_votes in file
-        #   votecnt=votecnt+1
-        #    return votecnt
-
-
+        totalvotes = sum(votes)
+    
     #A complete list of candidates who received votes
-     #candidates = int[]
-     #If candidates > 0:
-    #    print(name of candidate)
+     
 
     #The percentage of votes each candidate won
     #percentage of votes = total number votes of candidate / overall total number of votes
 
     #The total number of votes each candidate won
-    # Function to find winner of an election where votes
-# are represented as candidate names
-#from collections import Counter
+  
  
 #def winner(input):
  
@@ -92,9 +80,9 @@ with open(csvpath, newline='') as csvfile:
   
       
             
-    #print("Election Results")
-    #print("----------------------------")
-    #print(f"Total Votes Cast:{votecnt}" )
+    print("Election Results")
+    print("----------------------------")
+    print(f"Total Votes Cast:{totalvotes}" )
     #print(f"List Received Votes:{}")
     #print(f"Percent of Votes:{}")
     #print("Total Votes Candidate won:{}")
