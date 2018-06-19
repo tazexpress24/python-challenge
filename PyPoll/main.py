@@ -10,10 +10,10 @@ csvpath = os.path.join('election_data.csv')
 totalvotes = 0
 percent_votes = 0
 votes = []
-counties =  []
 candidates = []
-candidates_list = []
+votesPerCandidate = []
 largest_so_far = 0
+winner = 0
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -29,46 +29,54 @@ with open(csvpath, newline='') as csvfile:
     for row in csvreader:
         vote = int(row[0])
         votes.append(vote)
+        candidate = str(row[2])
 
-    
-    #The total number of votes cast
-        totalvotes = sum(votes)
-    
-    #A complete list of candidates who received votes
-    for row in csvreader:
-         candidates = str(row[2])
-         #candidates.append(candidates)
-         candidates_list = len(str(row[2]))
-
-    #The percentage of votes each candidate won
-    #for row in csvreader:
-     #   vote = int(row[0])
-     #   votes.append(vote)
-    
-    #percent_votes = ((votes[0] / sum(votes))
+        isNewCandidate = 1
+        for i in range(0, len(candidates)):
+            if candidate == candidates[i]:
+                isNewCandidate = 0
+                votesPerCandidate[i] += 1
         
+        if isNewCandidate == 1:
+            candidates.append(candidate)
+            votesPerCandidate.append(1)
+    #The total number of votes cast
+        totalvotes += 1
+            
     #percentage of votes = total number votes of candidate / overall total number of votes
 
     #The total number of votes each candidate won
   
-    for candidate_number in range(candidates):
+    # for candidate_number in range(0, len(candidates) - 1):
    # print('Candidate {0}:'.format(candidate_number + 1))
     #name = input('Whats the name of this candidate?\n')
-        candidate_info = (candidate_number + 1, name)
-        candidates.append(candidate_info) 
+        # candidate_info = (candidate_number + 1, name)
+        # candidates.append(candidate_info) 
 
     #The winner of the election based on popular vote.  
-    for candidate_number in range(votes):
-        if candidate_number > largest_so_far:
-            largest_so_far = candidate_number
-            print(largest_so_far, candidate_number)
+    # for i in range(int(votes[0])):
+    #     if candidate_number > largest_so_far:
+    #         largest_so_far = i 
+    #         print(largest_so_far, i)
   
       
             
 print("Election Results")
 print("----------------------------")
+for i in range(0, len(candidates)):
+    percent = votesPerCandidate[i] / totalvotes
+    print(f"{candidates[i]} : {percent} ({votesPerCandidate[i]})")
+
+    if(votesPerCandidate[winner] < votesPerCandidate[i]):
+        winner = i
+
+
+
+
 print(f"Total Votes Cast:{totalvotes}" )
-print(f"List Received Votes:{candidates_list}")
+print(f"List Received Votes:{candidates}")
+print("----------------------------")
+print(f"Winner : {candidates[winner]}" )
 #print(f"Percent of Votes:{percent_votes}")
 #print("Total Votes Candidate won:{}")
 # print("Winner:{}")
