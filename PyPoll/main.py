@@ -8,16 +8,17 @@ csvpath = os.path.join('election_data.csv')
 
 #Define the variables
 totalvotes = 0
+percent_votes = 0
 votes = []
 counties =  []
 candidates = []
-
+candidates_list = []
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
+    #print(csvreader)
 
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
@@ -33,9 +34,18 @@ with open(csvpath, newline='') as csvfile:
         totalvotes = sum(votes)
     
     #A complete list of candidates who received votes
-     
+    for row in csvreader:
+         candidates = str(row[2])
+         #candidates.append(candidates)
+         candidates_list = len(str(row[2]))
 
     #The percentage of votes each candidate won
+    #for row in csvreader:
+     #       vote = int(row[0])
+      #      votes.append(vote)
+    
+       # percent_votes = ((votes[0] / sum(votes))
+        
     #percentage of votes = total number votes of candidate / overall total number of votes
 
     #The total number of votes each candidate won
@@ -83,8 +93,8 @@ with open(csvpath, newline='') as csvfile:
     print("Election Results")
     print("----------------------------")
     print(f"Total Votes Cast:{totalvotes}" )
-    #print(f"List Received Votes:{}")
-    #print(f"Percent of Votes:{}")
+    print(f"List Received Votes:{candidates_list}")
+    #print(f"Percent of Votes:{percent_votes}")
     #print("Total Votes Candidate won:{}")
    # print("Winner:{}")
 
