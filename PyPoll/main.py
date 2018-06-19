@@ -13,8 +13,7 @@ votes = []
 counties =  []
 candidates = []
 candidates_list = []
-candidates
-
+largest_so_far = 0
 with open(csvpath, newline='') as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -59,7 +58,10 @@ with open(csvpath, newline='') as csvfile:
         candidates.append(candidate_info) 
 
     #The winner of the election based on popular vote.  
-    
+    for candidate_number in range(votes):
+        if candidate_number > largest_so_far:
+            largest_so_far = candidate_number
+            print(largest_so_far, candidate_number)
   
       
             
